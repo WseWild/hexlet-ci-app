@@ -9,10 +9,16 @@ jobs:
       - uses: actions/setup-node@v3
         with: 
           node-version: 16
-      - run: npm ci
-      - run: npm test
-      - run: npm install
-      - run: npm run build
+          
+      - name: setup
+        run: make setup
+
+      - name: test
+        run: make test
+
+      - name: lint 
+        run: make lint
+        
       - run: make test
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
